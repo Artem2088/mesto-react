@@ -1,47 +1,16 @@
 import React from 'react';
 import '../index.css';
-import avatar from '../images/Avatar.png';
 import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 function App() {
   return (
     <div className='page'>
       <Header />
-      <div className='page__container'>
-        <main className='content'>
-          <section className='profile'>
-            <button
-              className='profile__avatar-edit'
-              type='button'
-              title='Обновить аватар'
-            >
-              <img className='profile__avatar' src={avatar} alt='Жак Кусто' />
-            </button>
-            <div className='profile__info'>
-              <h1 className='profile__name'>Жак-Ив Кусто</h1>
-              <button
-                className='profile__btn-edit'
-                type='button'
-                title='Редактировать профиль'
-              ></button>
-              <p className='profile__about'>Исследователь океана</p>
-            </div>
-            <button
-              className='profile__btn-add'
-              type='button'
-              title='Обновить фотографию'
-            ></button>
-          </section>
-
-          <section className='elements'>
-            <ul className='elements__list'></ul>
-          </section>
-        </main>
-
-        <footer className='footer'>
-          <p className='footer__copyright'>&copy; 2022. Mesto Russia</p>
-        </footer>
-      </div>
+      <Main />
+      <Footer />
+      <div className='page__container'></div>
 
       <div className='popup popup_edit'>
         <div className='popup__container'>
