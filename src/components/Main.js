@@ -1,27 +1,51 @@
-import React from 'react';
-import avatar from '../images/Avatar.png';
+import React, { useEffect, useState } from 'react';
+import '../index.css';
+import Api from '../utils/Api';
+import Card from './Card';
 
-function Main() {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, item }) {
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [elements, setElements] = useState([]);
+
+  useEffect(() => {
+    Api.getUserInfo().then(({ name, about, avatar }) => {
+      setUserName(name);
+      setUserDescription(about);
+      setUserAvatar(avatar);
+    });
+    Api.getInitialCards().then((data) => {
+      setElements(data);
+    });
+  }, []);
+
   return (
     <main className='content'>
       <section className='profile'>
         <button
+          onClick={onEditAvatar}
           className='profile__avatar-edit'
           type='button'
           title='Обновить аватар'
         >
-          <img className='profile__avatar' src={avatar} alt='Жак Кусто' />
+          <img
+            className='profile__avatar'
+            style={{ backgroundImage: `url(${userAvatar})` }}
+          />
         </button>
         <div className='profile__info'>
-          <h1 className='profile__name'>Жак-Ив Кусто</h1>
+          <h1 className='profile__name'>{userName}</h1>
           <button
+            onClick={onEditProfile}
             className='profile__btn-edit'
             type='button'
             title='Редактировать профиль'
           ></button>
-          <p className='profile__about'>Исследователь океана</p>
+          <p className='profile__about'>{userDescription}</p>
         </div>
         <button
+          onClick={onAddPlace}
           className='profile__btn-add'
           type='button'
           title='Обновить фотографию'
@@ -29,7 +53,11 @@ function Main() {
       </section>
 
       <section className='elements'>
-        <ul className='elements__list'></ul>
+        <ul className='elements__list'>
+          {elements.map((item, i) => (
+            <Card key={i} link={item.link} name={item.name} />
+          ))}
+        </ul>
       </section>
     </main>
   );
