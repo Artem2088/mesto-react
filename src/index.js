@@ -5,6 +5,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 const page = ReactDOM.createRoot(document.getElementById('page'));
+
 page.render(<App />);
 
 reportWebVitals();
