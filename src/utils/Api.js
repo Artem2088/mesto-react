@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 class Api {
   constructor({ headers, baseUrl }) {

@@ -10,6 +10,7 @@ function App() {
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(false);
 
   //функции открытия попапов
   const handleEditAvatarClick = () => {
@@ -24,11 +25,16 @@ function App() {
     setisAddPlacePopupOpen(!isAddPlacePopupOpen);
   };
 
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+  }
+
   //функции закрытия попапов
   const closeAllPopups = () => {
     setisEditProfilePopupOpen(false);
     setisAddPlacePopupOpen(false);
     setisEditAvatarPopupOpen(false);
+    setSelectedCard(false);
   };
 
   return (
@@ -39,17 +45,18 @@ function App() {
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
+          onCardClick={handleCardClick}
         />
         <Footer />
       </div>
 
       <PopupWithForm
-        onClose={closeAllPopups}
+        isOpen={isEditProfilePopupOpen}
         name='edit'
         title='Редактировать профиль'
-        isOpen={isEditProfilePopupOpen}
         container='popup__container'
         form='popoup__form'
+        onClose={closeAllPopups}
       >
         <fieldset className='popup__fieldset'>
           <input
@@ -139,7 +146,10 @@ function App() {
         container='popup__container'
         form='popoup__form'
       ></PopupWithForm>
-      <ImagePopup />
+      <ImagePopup 
+      card={selectedCard}
+      onClose={closeAllPopups}
+      />
     </div>
   );
 }

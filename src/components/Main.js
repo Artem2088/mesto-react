@@ -3,7 +3,7 @@ import '../index.css';
 import Api from '../utils/Api';
 import Card from './Card';
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar, item }) {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, setUserAvatar] = useState('');
@@ -17,6 +17,8 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, item }) {
     });
     Api.getInitialCards().then((data) => {
       setElements(data);
+    }).catch((err) => {
+      console.error(err);
     });
   }, []);
 
@@ -54,8 +56,8 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, item }) {
 
       <section className='elements'>
         <ul className='elements__list'>
-          {elements.map((item, i) => (
-            <Card key={i} link={item.link} name={item.name} />
+          {elements.map((card) => (
+            <Card key={card._id} card={card} onCardClick={onCardClick}/>
           ))}
         </ul>
       </section>

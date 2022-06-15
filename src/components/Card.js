@@ -1,12 +1,19 @@
 import React from 'react';
 import '../index.css';
 
-function Card(card) {
+function Card({card, onCardClick}) {
+
+  const handleClick = () => {
+    onCardClick(card);
+  } 
+
   return (
     <figure className='element'>
       <img
         className='element__image'
-        style={{ backgroundImage: `url(${card.link})` }}
+        src={`${card.link}`}
+        alt={`Здесь будет картинка ${card.name}`} 
+        onClick={handleClick}
       />
       <button
         className='element__btn-delete'
@@ -22,7 +29,7 @@ function Card(card) {
               type='button'
               title='Нравится'
             ></button>
-            <p className='element__like-count'>{card.likes}</p>
+            <p className='element__like-count'>{card.likes.length}</p>
           </>
         </div>
       </figcaption>
