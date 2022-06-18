@@ -11,7 +11,7 @@ function Card({card, onCardClick}) {
     <figure className='element'>
       <img
         className='element__image'
-        src={`${card.link}`}
+        src={card.link}
         alt={`Здесь будет картинка ${card.name}`} 
         onClick={handleClick}
       />
@@ -23,14 +23,12 @@ function Card({card, onCardClick}) {
       <figcaption className='element__info'>
         <h2 className='element__caption'>{card.name}</h2>
         <div className='element__like-container'>
-          <>
             <button
               className='element__btn-like'
               type='button'
               title='Нравится'
             ></button>
             <p className='element__like-count'>{card.likes.length}</p>
-          </>
         </div>
       </figcaption>
     </figure>

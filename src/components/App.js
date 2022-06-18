@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../index.css';
 import Header from './Header';
 import Main from './Main';
@@ -10,7 +10,7 @@ function App() {
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
 
   //функции открытия попапов
   const handleEditAvatarClick = () => {
@@ -34,7 +34,7 @@ function App() {
     setisEditProfilePopupOpen(false);
     setisAddPlacePopupOpen(false);
     setisEditAvatarPopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard({});
   };
 
   return (
