@@ -1,5 +1,3 @@
-
-
 class Api {
   constructor({ headers, baseUrl }) {
     this._headers = headers;
@@ -83,21 +81,6 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  // api
-  // .getPageNeedData()
-  // .then((responses) => {
-  //   const [cardData, userData] = responses;
-  //   userInfo.setUserInfo({
-  //     userName: userData.name,
-  //     userDescription: userData.about,
-  //   });
-  //   userInfo.setUserAvatar({ userAvatarLink: userData.avatar });
-  //   userInfo.saveUserId(userData._id);
-  //   cards.renderItems(cardData);
-  // })
-  // .catch((err) => {
-  //   console.error(err);
-  // });
 }
 export default new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
