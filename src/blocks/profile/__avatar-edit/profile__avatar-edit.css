@@ -8,6 +8,7 @@
 	border-radius: 50%;
 	background: transparent;
 	transition: background-color 0.2s linear;
+	z-index: 1;
 }
 
 .profile__avatar-edit:hover {

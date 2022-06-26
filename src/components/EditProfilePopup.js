@@ -53,6 +53,7 @@ return (
             required
             autoComplete='off'
             onChange={handleNameChange}
+            value={name|| ''}
           />
           <span className='popup__input-error name-error'></span>
           <input
@@ -66,6 +67,7 @@ return (
             required
             autoComplete='off'
             onChange={handleDescriptionChange}
+            value={description || ''}
           />
           <span className='popup__input-error description-error'></span>
         </fieldset>
